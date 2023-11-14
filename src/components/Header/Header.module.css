@@ -1,0 +1,38 @@
+.header {
+    background-color: rgb(245, 245, 240);
+}
+.headerContent {
+    display: flex;
+    justify-content: center;
+    height: 104px;
+    max-width: 1000px;
+}
+.logoContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 4rem;
+}
+.menuContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.logo {
+    height: 2.7rem;
+}
+.sup {
+    font-size: 0.7rem;
+    vertical-align: super;
+}
+.title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    color: rgb(137, 207, 240);
+}
+.loginContainer {
+    align-self: flex-start;
+    display: flex;
+    flex: 1;
+    justify-content: end;
+}
