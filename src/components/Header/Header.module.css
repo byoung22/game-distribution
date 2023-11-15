@@ -1,7 +1,10 @@
 .header {
-    background-color: rgb(245, 245, 240);
+    background-color: var(--secondary-bg-color);
+    display: flex;
+    justify-content: center;
 }
 .headerContent {
+    flex: auto;
     display: flex;
     justify-content: center;
     height: 104px;
@@ -21,18 +24,23 @@
     height: 2.7rem;
 }
 .sup {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     vertical-align: super;
 }
 .title {
     font-size: 1.7rem;
     font-weight: 600;
     letter-spacing: 0.1rem;
-    color: rgb(137, 207, 240);
+    color: var(--text);
 }
 .loginContainer {
     align-self: flex-start;
     display: flex;
     flex: 1;
     justify-content: end;
+}
+.button {
+    border: 0;
+    background-color: transparent;
+    font-size: 0.8rem;
 }

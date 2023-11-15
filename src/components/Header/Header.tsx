@@ -20,9 +20,9 @@ export default function Header() {
           <HeaderButton title="SUPPORT" />
         </div>
         <div className={styles.loginContainer}>
-          <button type="button">login</button>
+          <button type="button" className={styles.button}>login</button>
           <p>|</p>
-          <button type="button">language</button>
+          <button type="button" className={styles.button}>language ▼</button>
         </div>
       </div>
     </header>

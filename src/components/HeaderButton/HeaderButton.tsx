@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './HeaderButton.module.css';
 
 interface HeaderButtonProps {
   title: string,
@@ -12,11 +13,13 @@ export default function HeaderButton({ title, sub } : HeaderButtonProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <button type="button">
+      <button type="button" className={styles.button}>
         {title}
       </button>
       {isHovered && sub && (
-        sub.map((subtitle) => <button key={`${title}-${subtitle}`} type="button">{subtitle}</button>)
+      <div className={styles.dropdown}>
+        {sub.map((subtitle) => <button key={`${title}-${subtitle}`} type="button">{subtitle}</button>)}
+      </div>
       )}
     </div>
   );

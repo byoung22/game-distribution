@@ -1,0 +1,17 @@
+.button {
+    border: 0;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.dropdown {
+    position: absolute;
+    background-color: var(--darker-secondary);
+    display: flex;
+    flex-direction: column;
+}
+.dropdown>button {
+    text-align: left;
+    border: 0;
+    background-color: transparent;
+}

@@ -21,7 +21,7 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -47,3 +47,17 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/*
+* {
+	outline: red 1px dashed;
+}
+*/
+:root {
+	--main-bg-color: rgb(247, 251, 252);
+	--secondary-bg-color: rgb(214, 230, 242);
+	--darker-secondary: rgb(185, 215, 234);
+	--dark-blue:rgb(118, 159, 205);
+	--text:rgb(46, 66, 88);
+	background-color: var(--main-bg-color);
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
