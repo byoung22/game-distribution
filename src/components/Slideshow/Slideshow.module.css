@@ -1,0 +1,31 @@
+.card {
+    display: flex;
+}
+.mainPhoto {
+    height: 355px;
+    width: 616px;
+    overflow: hidden;
+}
+.mainPhoto>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.photoContainer {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+}
+.secondaryPhoto {
+    height: 69px;
+    width: 169px;
+    overflow: hidden;
+}
+.secondaryPhoto>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.info {
+    height: 353px;
+    width: 314px;
+}

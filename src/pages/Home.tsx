@@ -9,6 +9,27 @@ type Games = {
   next: string;
 };
 
+function generateFakePrice() {
+  const prices = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60];
+  let index = Math.random();
+  let price;
+  if (index < 0.7) {
+    // 70% chance of landing $0-$30
+    index = Math.floor(index * 10);
+    if (index === 0) {
+      price = 'Free To Play';
+    } else {
+      price = `${prices[index] - 1}.99`;
+    }
+  } else {
+    // 30% chance of landing $35-$60
+    index = Math.floor((index - 0.7) * 20) + 7;
+    price = `${prices[index] - 1}.99`;
+  }
+
+  return price;
+}
+
 // function threeMonthInterval() {
 //   const today = new Date();
 //   const month = String(today.getMonth() + 1).padStart(2, '0');
