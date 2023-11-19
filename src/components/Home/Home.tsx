@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
-import Header from '../components/Header/Header.js';
-import Slideshow from '../components/Slideshow/Slideshow.js';
-import key from '../key.js';
-import data from './data.js';
+import Slideshow from '../Slideshow/Slideshow.js';
+import styles from './Home.module.css';
+// import key from '../key.js';
+import data from '../../pages/data.js';
 
 type Games = {
-  results: object[];
-  next: string;
+  results: Game[],
+  next: string,
+};
+type Game = {
+  name: string,
+  short_screenshots: object[],
+  price: string,
 };
 
 function generateFakePrice() {
@@ -19,14 +24,13 @@ function generateFakePrice() {
     if (index === 0) {
       price = 'Free To Play';
     } else {
-      price = `${prices[index] - 1}.99`;
+      price = `$${prices[index] - 1}.99`;
     }
   } else {
     // 30% chance of landing $35-$60
     index = Math.floor((index - 0.7) * 20) + 7;
-    price = `${prices[index] - 1}.99`;
+    price = `$  ${prices[index] - 1}.99`;
   }
-
   return price;
 }
 
@@ -52,8 +56,14 @@ function Home() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setGames(data);
-    console.log(data);
+    function addGamePrices() {
+      const copy = { ...data };
+      copy.results = copy.results.map(
+        (game: Game) => ({ ...game, price: generateFakePrice() }),
+      );
+      setGames(copy);
+    }
+    addGamePrices();
   }, []);
   // useEffect(() => {
   //   const getGames = async () => {
@@ -83,9 +93,9 @@ function Home() {
   // }, []);
 
   return (
-    <div>
-      <Header />
+    <div className={styles.container}>
       {games && <Slideshow results={games.results} />}
+      <button onClick={() => console.log(games)} />
     </div>
   );
 }

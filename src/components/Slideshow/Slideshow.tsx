@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './Slideshow.module.css';
+import windowsLogo from '../../assets/windows.svg';
+import xboxLogo from '../../assets/xbox.svg';
+import playstationLogo from '../../assets/playstation.svg';
 
 type Props = {
   results: Game[],
@@ -7,60 +10,89 @@ type Props = {
 
 type Game = {
   name: string,
-  short_screenshots: GameScreenshots[],
+  parent_platforms: PlatformList[],
+  short_screenshots: ScreenshotList[],
+  price: string,
 };
 
-type GameScreenshots = {
+type PlatformList = {
+  platform: PlatformInfo,
+};
+
+type PlatformInfo = {
+  name: string,
+};
+
+type ScreenshotList = {
   image: string,
 };
 
 export default function Slideshow({ results }: Props) {
-  const [selection, setSelection] = useState(0);
-  const [photos, setPhotos] = useState(results[0].short_screenshots);
+  const [displayedGame, setDisplayedGame] = useState(results[0]);
+  let platform2 = null;
+  let platform3 = null;
+  if (displayedGame.parent_platforms.length > 1) {
+    platform2 = displayedGame.parent_platforms[1].platform.name;
+    if (displayedGame.parent_platforms.length > 2) {
+      platform3 = displayedGame.parent_platforms[2].platform.name;
+    }
+  }
 
-  function onChange(sel: number) {
-    setSelection(sel);
-    setPhotos(results[sel].short_screenshots);
+  function onChange(selection: number) {
+    setDisplayedGame(results[selection]);
   }
 
   return (
-    <div>
+    <div className={styles.slideshow}>
+      <h2>FEATURED & RECOMMENDED</h2>
       <div className={styles.card}>
         <div className={styles.mainPhoto}>
           <img
-            src={photos[0].image}
-            alt={`${results[selection].name}`}
+            src={displayedGame.short_screenshots[0].image}
+            alt={`${displayedGame.name}`}
           />
         </div>
         <div className={styles.info}>
-          <h3>{results[selection].name}</h3>
+          <h3 className={styles.gameTitle}>{displayedGame.name}</h3>
           <div className={styles.photoContainer}>
             <div className={styles.secondaryPhoto}>
               <img
-                src={photos[1].image}
-                alt={`${results[selection].name}`}
+                src={displayedGame.short_screenshots[1].image}
+                alt={`${displayedGame.name}`}
               />
             </div>
             <div className={styles.secondaryPhoto}>
               <img
-                src={photos[2].image}
-                alt={`${results[selection].name}`}
+                src={displayedGame.short_screenshots[2].image}
+                alt={`${displayedGame.name}`}
               />
             </div>
             <div className={styles.secondaryPhoto}>
               <img
-                src={photos[3].image}
-                alt={`${results[selection].name}`}
+                src={displayedGame.short_screenshots[3].image}
+                alt={`${displayedGame.name}`}
               />
             </div>
             <div className={styles.secondaryPhoto}>
               <img
-                src={photos[4].image}
-                alt={`${results[selection].name}`}
+                src={displayedGame.short_screenshots[4].image}
+                alt={`${displayedGame.name}`}
               />
             </div>
           </div>
-          <p>Now Available</p>
+          <p className={styles.reason}>Now Available</p>
+          <div className={styles.priceContainer}>
+            <p className={styles.price}>{displayedGame.price}</p>
+            <div className={styles.logoContainer}>
+              <img className={styles.logo} src={windowsLogo} alt="Available For PC" />
+              {(platform2 === 'Xbox' || platform3 === 'Xbox') && (
+                <img className={styles.logo} src={xboxLogo} alt="Available For Xbox" />
+              )}
+              {(platform2 === 'PlayStation') && (
+                <img className={styles.logo} src={playstationLogo} alt="Available For Playstation" />
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <div>

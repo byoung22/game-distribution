@@ -2,6 +2,8 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -59,5 +61,5 @@ table {
 	--dark-blue:rgb(118, 159, 205);
 	--text:rgb(46, 66, 88);
 	background-color: var(--main-bg-color);
+	box-sizing: border-box;
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');

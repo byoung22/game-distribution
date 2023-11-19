@@ -9,6 +9,7 @@
     background-color: var(--darker-secondary);
     display: flex;
     flex-direction: column;
+    z-index: 2;
 }
 .dropdown>button {
     text-align: left;

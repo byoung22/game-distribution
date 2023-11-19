@@ -1,10 +1,17 @@
+.slideshow{
+    grid-area: main;
+    height: 412px;
+    width: 940px;
+}
 .card {
     display: flex;
 }
 .mainPhoto {
-    height: 355px;
+    height: 353px;
     width: 616px;
     overflow: hidden;
+    z-index: 1;
+    box-shadow: 7px 0 10px -3px #000;
 }
 .mainPhoto>img {
     height: 100%;
@@ -14,6 +21,8 @@
 .photoContainer {
     display: grid;
     grid-template: 1fr 1fr / 1fr 1fr;
+    margin: 0.5rem 0.5rem 0.5rem -30px;
+    gap: 0.5rem;
 }
 .secondaryPhoto {
     height: 69px;
@@ -26,6 +35,36 @@
     object-fit: cover;
 }
 .info {
+    position: relative;
+    background-color: var(--darker-secondary);
     height: 353px;
-    width: 314px;
+    width: 324px;
+}
+.gameTitle {
+    font-size: 1.63rem ;
+    padding: 0.25rem 0.5rem;
+    margin: 1rem 0;
+}
+.reason {
+    font-size: 1.2rem;
+    font-weight: 300;
+    padding: 0.5rem 0.5rem 0 0.5rem ;
+}
+.priceContainer {
+    position: absolute;
+    bottom: 0;
+    padding: 0.75rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.logoContainer {
+    margin-right: 0.75rem;
+    display: flex;
+    gap: 0.25rem;
+}
+.price {
+    align-self: flex-end;
+    font-size: 0.75rem;
+    padding: 0 1rem;
 }
