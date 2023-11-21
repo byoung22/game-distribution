@@ -8,13 +8,16 @@
     flex: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 104px;
     max-width: 1000px;
 }
 .logoContainer {
+    margin-right: 4rem;
+}
+.logoContainer>a{
     display: flex;
     align-items: center;
-    margin-right: 4rem;
 }
 .menuContainer {
     display: flex;

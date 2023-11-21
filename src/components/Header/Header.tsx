@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import HeaderButton from '../HeaderButton/HeaderButton';
 import styles from './Header.module.css';
 import logoUrl from '../../assets/logo.png';
@@ -7,11 +8,13 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.headerContent}>
         <div className={styles.logoContainer}>
-          <img src={logoUrl} className={styles.logo} alt="Dream Logo" />
-          <h1 className={styles.title}>
-            DREAM
-            <sup className={styles.sup}>®</sup>
-          </h1>
+          <Link to="/">
+            <img src={logoUrl} className={styles.logo} alt="Dream Logo" />
+            <h1 className={styles.title}>
+              DREAM
+              <sup className={styles.sup}>®</sup>
+            </h1>
+          </Link>
         </div>
         <div className={styles.menuContainer}>
           <HeaderButton title="STORE" sub={['Home', 'Discovery Queue', 'Wishlist', 'Point Shop', 'News', 'Stats']} />

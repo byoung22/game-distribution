@@ -3,7 +3,7 @@ import Header from '../components/Header/Header';
 
 function Root() {
   return (
-    <div>
+    <div className="main">
       <Header />
       <Outlet />
     </div>

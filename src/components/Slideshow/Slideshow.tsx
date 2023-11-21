@@ -1,33 +1,12 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Slideshow.module.css';
+import { GamesType } from '../../pages/Home/Home';
 import windowsLogo from '../../assets/windows.svg';
 import xboxLogo from '../../assets/xbox.svg';
 import playstationLogo from '../../assets/playstation.svg';
 
-type Props = {
-  results: Game[],
-};
-
-type Game = {
-  name: string,
-  parent_platforms: PlatformList[],
-  short_screenshots: ScreenshotList[],
-  price: string,
-};
-
-type PlatformList = {
-  platform: PlatformInfo,
-};
-
-type PlatformInfo = {
-  name: string,
-};
-
-type ScreenshotList = {
-  image: string,
-};
-
-export default function Slideshow({ results }: Props) {
+export default function Slideshow({ results }: GamesType) {
   const [displayedGame, setDisplayedGame] = useState(results[0]);
   let platform2 = null;
   let platform3 = null;
@@ -44,57 +23,59 @@ export default function Slideshow({ results }: Props) {
 
   return (
     <div className={styles.slideshow}>
-      <h2>FEATURED & RECOMMENDED</h2>
-      <div className={styles.card}>
-        <div className={styles.mainPhoto}>
-          <img
-            src={displayedGame.short_screenshots[0].image}
-            alt={`${displayedGame.name}`}
-          />
-        </div>
-        <div className={styles.info}>
-          <h3 className={styles.gameTitle}>{displayedGame.name}</h3>
-          <div className={styles.photoContainer}>
-            <div className={styles.secondaryPhoto}>
-              <img
-                src={displayedGame.short_screenshots[1].image}
-                alt={`${displayedGame.name}`}
-              />
+      <h2 className={styles.containerTitle}>FEATURED & RECOMMENDED</h2>
+      <Link to={`games/${displayedGame.slug}`}>
+        <div className={styles.card}>
+          <div className={styles.mainPhoto}>
+            <img
+              src={displayedGame.short_screenshots[0].image}
+              alt={`${displayedGame.name}`}
+            />
+          </div>
+          <div className={styles.info}>
+            <h3 className={styles.gameTitle}>{displayedGame.name}</h3>
+            <div className={styles.photoContainer}>
+              <div className={styles.secondaryPhoto}>
+                <img
+                  src={displayedGame.short_screenshots[1].image}
+                  alt={`${displayedGame.name}`}
+                />
+              </div>
+              <div className={styles.secondaryPhoto}>
+                <img
+                  src={displayedGame.short_screenshots[2].image}
+                  alt={`${displayedGame.name}`}
+                />
+              </div>
+              <div className={styles.secondaryPhoto}>
+                <img
+                  src={displayedGame.short_screenshots[3].image}
+                  alt={`${displayedGame.name}`}
+                />
+              </div>
+              <div className={styles.secondaryPhoto}>
+                <img
+                  src={displayedGame.short_screenshots[4].image}
+                  alt={`${displayedGame.name}`}
+                />
+              </div>
             </div>
-            <div className={styles.secondaryPhoto}>
-              <img
-                src={displayedGame.short_screenshots[2].image}
-                alt={`${displayedGame.name}`}
-              />
-            </div>
-            <div className={styles.secondaryPhoto}>
-              <img
-                src={displayedGame.short_screenshots[3].image}
-                alt={`${displayedGame.name}`}
-              />
-            </div>
-            <div className={styles.secondaryPhoto}>
-              <img
-                src={displayedGame.short_screenshots[4].image}
-                alt={`${displayedGame.name}`}
-              />
+            <p className={styles.reason}>Now Available</p>
+            <div className={styles.priceContainer}>
+              <p className={styles.price}>{displayedGame.price}</p>
+              <div className={styles.logoContainer}>
+                <img className={styles.logo} src={windowsLogo} alt="Available For PC" />
+                {(platform2 === 'Xbox' || platform3 === 'Xbox') && (
+                  <img className={styles.logo} src={xboxLogo} alt="Available For Xbox" />
+                )}
+                {(platform2 === 'PlayStation') && (
+                  <img className={styles.logo} src={playstationLogo} alt="Available For Playstation" />
+                )}
+              </div>
             </div>
           </div>
-          <p className={styles.reason}>Now Available</p>
-          <div className={styles.priceContainer}>
-            <p className={styles.price}>{displayedGame.price}</p>
-            <div className={styles.logoContainer}>
-              <img className={styles.logo} src={windowsLogo} alt="Available For PC" />
-              {(platform2 === 'Xbox' || platform3 === 'Xbox') && (
-                <img className={styles.logo} src={xboxLogo} alt="Available For Xbox" />
-              )}
-              {(platform2 === 'PlayStation') && (
-                <img className={styles.logo} src={playstationLogo} alt="Available For Playstation" />
-              )}
-            </div>
-          </div>
         </div>
-      </div>
+      </Link>
       <div>
         <button type="button" aria-label={results[0].name} onClick={() => onChange(0)} />
         <button type="button" aria-label={results[1].name} onClick={() => onChange(1)} />

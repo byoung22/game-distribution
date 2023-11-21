@@ -63,3 +63,17 @@ table {
 	background-color: var(--main-bg-color);
 	box-sizing: border-box;
 }
+.main {
+	display: grid;
+    grid-template-columns: 1fr 940px 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "header header header"
+        ". content ."
+        "footer footer footer";
+}
+
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+}

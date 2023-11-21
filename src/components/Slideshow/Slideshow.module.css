@@ -1,7 +1,12 @@
 .slideshow{
-    grid-area: main;
+    margin: 1.3rem;
     height: 412px;
     width: 940px;
+}
+.containerTitle{
+    font-size: 1.3rem;
+    padding-top: 2px;
+    margin-bottom: 0.75rem;
 }
 .card {
     display: flex;
@@ -33,6 +38,10 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    opacity: 0.6;
+}
+.secondaryPhoto>img:hover {
+    opacity: 1;
 }
 .info {
     position: relative;

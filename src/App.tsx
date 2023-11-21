@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './pages/Root';
-import Home from './components/Home/Home';
+import Home from './pages/Home/Home';
+import Game from './pages/Game/Game';
 import ErrorPage from './pages/Error';
 
 export default function Router() {
@@ -13,9 +14,6 @@ export default function Router() {
         { index: true, element: <Home /> },
         { path: 'games/:slug', element: <Game /> },
       ],
-    },
-    {
-      path: 'games/:game',
     },
   ]);
 

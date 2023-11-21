@@ -1,17 +1,31 @@
 import { useState, useEffect } from 'react';
-import Slideshow from '../Slideshow/Slideshow.js';
+import Slideshow from '../../components/Slideshow/Slideshow.js';
 import styles from './Home.module.css';
 // import key from '../key.js';
-import data from '../../pages/data.js';
+import data from '../../data.js';
 
-type Games = {
-  results: Game[],
+export type GamesType = {
+  results: GameType[],
   next: string,
 };
-type Game = {
+type GameType = {
   name: string,
-  short_screenshots: object[],
+  slug: string,
+  parent_platforms: PlatformListType[],
+  short_screenshots: ScreenshotListType[],
   price: string,
+};
+
+type PlatformListType = {
+  platform: PlatformInfoType,
+};
+
+type PlatformInfoType = {
+  name: string,
+};
+
+type ScreenshotListType = {
+  image: string,
 };
 
 function generateFakePrice() {
@@ -51,7 +65,7 @@ function generateFakePrice() {
 // }
 
 function Home() {
-  const [games, setGames] = useState<Games | null>(null);
+  const [games, setGames] = useState<GamesType | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -59,7 +73,7 @@ function Home() {
     function addGamePrices() {
       const copy = { ...data };
       copy.results = copy.results.map(
-        (game: Game) => ({ ...game, price: generateFakePrice() }),
+        (game: GameType) => ({ ...game, price: generateFakePrice() }),
       );
       setGames(copy);
     }
