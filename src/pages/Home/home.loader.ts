@@ -1,6 +1,7 @@
-import key from '../key.js';
+import key from '../../key.js';
+import actualData from '../../data';
+import { GamesType } from './Home.js';
 // import data from '../../data.js';
-import { GamesType } from './Root.js';
 
 function generateFakePrice() {
   const prices = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60];
@@ -17,7 +18,7 @@ function generateFakePrice() {
   } else {
     // 30% chance of landing $35-$60
     index = Math.floor((index - 0.7) * 20) + 7;
-    price = `$  ${prices[index] - 1}.99`;
+    price = `$${prices[index] - 1}.99`;
   }
   return price;
 }
@@ -45,17 +46,18 @@ function addGamePrices(data: GamesType) {
   return copy;
 }
 
-export default async function rootLoader() {
+export default async function homeLoader() {
   const time = threeMonthInterval();
-  const response = await fetch(
-    // `https://api.rawg.io/api/games?key=${key}&platforms=4&page=1&page_size=40&updated=${time}&ordering=-added`,
-  );
-  if (!response.ok) {
-    throw new Error(
-      `This is an HTTP error: The status is ${response.status}`,
-    );
-  }
-  const actualData = await response.json();
+  // const response = await fetch(
+  //   `https://api.rawg.io/api/games?key=${key}&platforms=4&page=1&page_size=40&updated=${time}&ordering=-added`,
+  // );
+  // if (!response.ok) {
+  //   throw new Error(
+  //     `This is an HTTP error: The status is ${response.status}`,
+  //   );
+  // }
+  // const actualData = await response.json();
+  console.log(actualData);
   const gamesWithPrices: GamesType = addGamePrices(actualData);
   return gamesWithPrices;
 }

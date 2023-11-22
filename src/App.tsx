@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './pages/Root';
-import rootLoader from './pages/Root.loader';
+import homeLoader from './pages/Home/home.loader';
 import Home from './pages/Home/Home';
 import Game from './pages/Game/Game';
 import ErrorPage from './pages/Error';
@@ -11,9 +11,12 @@ export default function Router() {
       path: '/',
       element: <Root />,
       errorElement: <ErrorPage />,
-      loader: rootLoader,
       children: [
-        { index: true, element: <Home /> },
+        {
+          index: true,
+          loader: homeLoader,
+          element: <Home />,
+        },
         { path: 'games/:slug', element: <Game /> },
       ],
     },
