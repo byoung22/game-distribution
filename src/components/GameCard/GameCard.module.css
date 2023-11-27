@@ -1,0 +1,10 @@
+.right {
+    max-width: 324px;
+    font-size: 0.8rem;
+}
+.mainImage {
+    height: 151px;
+    width: 324px;
+    background-size: cover;
+    background-position: center;
+}

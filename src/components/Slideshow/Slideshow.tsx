@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Slideshow.module.css';
-import { GamesType } from '../../pages/Root';
+import { GamesType } from '../../pages/Home/Home';
 import windowsLogo from '../../assets/windows.svg';
 import xboxLogo from '../../assets/xbox.svg';
 import playstationLogo from '../../assets/playstation.svg';
