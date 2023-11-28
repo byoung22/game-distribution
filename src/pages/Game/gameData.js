@@ -1,5 +1,5 @@
 /* eslint-disable */
-const data = {
+const gameData = {
     "count": 1,
     "next": null,
     "previous": null,
@@ -495,4 +495,4 @@ const data = {
     ],
     "user_platforms": false
 }
-export default data;
+export default gameData;

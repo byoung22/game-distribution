@@ -1,33 +1,9 @@
 import { useLoaderData } from 'react-router-dom';
+import { GamesType } from '../../types/types.js';
 import Slideshow from '../../components/Slideshow/Slideshow.js';
 import styles from './Home.module.css';
 import key from '../../key.js';
-import actualData from './data.js';
-
-export type GamesType = {
-  results: GameType[],
-  next: string,
-};
-
-type GameType = {
-  name: string,
-  slug: string,
-  parent_platforms: PlatformListType[],
-  short_screenshots: ScreenshotListType[],
-  price: string,
-};
-
-type PlatformListType = {
-  platform: PlatformInfoType,
-};
-
-type PlatformInfoType = {
-  name: string,
-};
-
-type ScreenshotListType = {
-  image: string,
-};
+import actualData from './data';
 
 function generateFakePrice() {
   const prices = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60];
@@ -84,7 +60,7 @@ export async function loader() {
   // }
   // const actualData = await response.json();
   console.log(actualData);
-  const gamesWithPrices: GamesType = addGamePrices(actualData);
+  const gamesWithPrices = addGamePrices(actualData);
   return gamesWithPrices;
 }
 
@@ -94,7 +70,6 @@ export default function Home() {
   return (
     <div className={styles.container}>
       {games && <Slideshow results={games.results} />}
-      <button onClick={() => console.log(games)} />
     </div>
   );
 }

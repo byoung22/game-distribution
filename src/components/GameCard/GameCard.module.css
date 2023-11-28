@@ -1,3 +1,23 @@
+.card {
+    display: flex;
+}
+.display {
+    max-width: 600px;
+    max-height: 337px;
+    background-size: cover;
+}
+.screenshots {
+    display: flex;
+}
+.screenshotBox {
+    max-width: 115px;
+    max-height: 65px;
+    background-size: cover;
+    background-position: center;
+}
+.screenshot {
+    max-width: 115px;
+}
 .right {
     max-width: 324px;
     font-size: 0.8rem;

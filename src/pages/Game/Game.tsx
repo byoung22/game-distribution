@@ -1,9 +1,9 @@
 import { useLoaderData } from 'react-router-dom';
-import { GamesType } from '../Home/Home';
+import { InfoType } from '../../types/types';
 import GameCard from '../../components/GameCard/GameCard';
 import styles from './Game.module.css';
-import key from '../../key';
-import data from './gameData';
+// import key from '../../key';
+import gameData from './gameData';
 import descriptionData from './descriptionData';
 
 type PropType = {
@@ -12,15 +12,6 @@ type PropType = {
 
 type ParamsType = {
   slug: string,
-};
-
-export type InfoType = {
-  data: GamesType,
-  descriptionData: DescriptionDataType,
-};
-
-type DescriptionDataType = {
-  description_raw: string,
 };
 
 export async function loader({ params }: PropType) {
@@ -43,7 +34,7 @@ export async function loader({ params }: PropType) {
   // }
   // const descriptionData = await response2.json();
   const obj = {
-    data,
+    gameData,
     descriptionData,
   };
   console.log(obj);
@@ -54,10 +45,13 @@ export default function Game() {
   const info = useLoaderData() as InfoType;
   return (
     <div className={styles.container}>
-      <h2>{info.data.results[0].name}</h2>
+      <h2>{info.gameData.results[0].name}</h2>
+      {info && (
       <GameCard
-        info={info}
+        gameData={info.gameData}
+        descriptionData={info.descriptionData}
       />
+      )}
     </div>
   );
 }

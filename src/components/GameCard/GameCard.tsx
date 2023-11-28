@@ -1,22 +1,32 @@
-import { InfoType } from '../../pages/Game/Game';
+import { useState } from 'react';
+import { InfoType } from '../../types/types';
 import styles from './GameCard.module.css';
 
-type PropType = {
-  info: InfoType,
-};
+export default function GameCard({ gameData, descriptionData }: InfoType) {
+  const [displayIndex, setdisplayIndex] = useState(0);
 
-export default function GameCard({ info }: PropType) {
-  const game = info.data.results[0];
-  const paragraphs = info.descriptionData.description_raw.split('\n\n');
+  const game = gameData.results[0];
+  const mainImage = gameData.results[0].short_screenshots[0].image;
+  const screenshots = gameData.results[0].short_screenshots.slice(1);
+  const firstParagraph = descriptionData.description_raw.split('\n\n')[0];
+
   return (
-    <div>
-      <div>
-        <div />
-        <div />
+    <div className={styles.card}>
+      <div className={styles.left}>
+        <div className={styles.display}>
+          <img src={screenshots[displayIndex].image} alt={game.name} />
+        </div>
+        <div className={styles.screenshots}>
+          {screenshots.map((obj) => (
+            <div className={styles.screenshotBox} key={obj.id}>
+              <img className={styles.screenshot} src={obj.image} alt={game.name} />
+            </div>
+          ))}
+        </div>
       </div>
       <div className={styles.right}>
-        <div className={styles.mainImage} style={{ backgroundImage: `url(${game.short_screenshots[0].image})` }} />
-        {paragraphs.map((par) => (<p key={par.substring(0, 10)}>{par}</p>))}
+        <div className={styles.mainImage} style={{ backgroundImage: `url(${mainImage})` }} />
+        <p>{firstParagraph}</p>
       </div>
     </div>
   );
