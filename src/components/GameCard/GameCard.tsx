@@ -13,19 +13,21 @@ export default function GameCard({ gameData, descriptionData }: InfoType) {
   return (
     <div className={styles.card}>
       <div className={styles.left}>
-        <div className={styles.display}>
-          <img src={screenshots[displayIndex].image} alt={game.name} />
+        <div className={styles.displayBox}>
+          <img className={styles.image} src={screenshots[displayIndex].image} alt={game.name} />
         </div>
         <div className={styles.screenshots}>
           {screenshots.map((obj) => (
             <div className={styles.screenshotBox} key={obj.id}>
-              <img className={styles.screenshot} src={obj.image} alt={game.name} />
+              <img className={styles.image} src={obj.image} alt={game.name} />
             </div>
           ))}
         </div>
       </div>
       <div className={styles.right}>
-        <div className={styles.mainImage} style={{ backgroundImage: `url(${mainImage})` }} />
+        <div className={styles.mainImageBox}>
+          <img className={styles.image} src={mainImage} alt={game.name} />
+        </div>
         <p>{firstParagraph}</p>
       </div>
     </div>
