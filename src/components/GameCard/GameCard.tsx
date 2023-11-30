@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { InfoType } from '../../types/types';
+import Slider from '../Slider/Slider';
 import styles from './GameCard.module.css';
 
 export default function GameCard({ gameData, descriptionData }: InfoType) {
@@ -13,17 +14,19 @@ export default function GameCard({ gameData, descriptionData }: InfoType) {
   return (
     <div className={styles.card}>
       <div className={styles.left}>
-        <div className={styles.displayBox}>
-          <img className={styles.image} src={screenshots[displayIndex].image} alt={game.name} />
-        </div>
-        <div className={styles.screenshots}>
+        <img className={styles.image} src={screenshots[displayIndex].image} alt={game.name} />
+      </div>
+      <div className={styles.screenshotBox}>
+        <div className={styles.screenshotList}>
           {screenshots.map((obj) => (
-            <div className={styles.screenshotBox} key={obj.id}>
+            <div className={styles.screenshotCard} key={obj.id}>
               <img className={styles.image} src={obj.image} alt={game.name} />
             </div>
           ))}
+          <input type="range" min="1" max="100" value="50" className="slider" id="myRange" />
         </div>
       </div>
+      <div />
       <div className={styles.right}>
         <div className={styles.mainImageBox}>
           <img className={styles.image} src={mainImage} alt={game.name} />

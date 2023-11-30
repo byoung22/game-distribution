@@ -1,13 +1,29 @@
 .card {
     display: grid;
     grid-template-columns: 37.5fr 1fr 20.25fr;
-    grid-template-rows: auto;
+    grid-template-rows: 337px 95px;
     grid-template-areas: 
         "main . right"
-        "slideshow . right"
+        "slideshow . right";
+}
+.displayBox{
+    grid-area: main;
 }
 .right {
     grid-area: right;
+}
+.screenshotBox{
+    grid-area: slideshow;
+    position: relative;
+    overflow: hidden;
+}
+.screenshotCard{
+    padding: 2px;
+}
+.screenshotList {
+    display: flex;
+    position: absolute;
+    width: 720px;
 }
 .image {
     width: 100%;
