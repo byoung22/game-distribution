@@ -11,13 +11,16 @@
 }
 .right {
     grid-area: right;
+    font-size: 0.8rem;
 }
 .screenshotBox{
     grid-area: slideshow;
     position: relative;
-    overflow: hidden;
+    overflow-x: scroll;
 }
 .screenshotCard{
+    border: 0;
+    margin: 0;
     padding: 2px;
 }
 .screenshotList {
